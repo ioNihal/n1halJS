@@ -1,0 +1,634 @@
+---
+title: "@n1hal/strx"
+description: "Small, dependency free string helpers - clean, consistent, and zero bloat."
+---
+
+# StringX (strx)
+
+Small, dependency free string helpers for everyday JavaScript.  
+Designed to be **readable**, **typed**, and **zero-bloat**.
+
+<Cards>
+  <Card title="Lightweight" description="Just clean JS, no dependencies." />
+  <Card title="Typed" description="Full TypeScript definitions included." />
+  <Card title="Documented" description="Every function has examples and JSDoc." />
+</Cards>
+
+---
+
+## Installation
+
+<Tabs items={['npm', 'yarn', 'pnpm']}>
+  <Tab value="npm">
+    ```bash
+    npm i @n1hal/strx
+    ```
+  </Tab>
+
+  <Tab value="yarn">
+    ```bash
+    yarn add @n1hal/strx
+    ```
+  </Tab>
+
+  <Tab value="pnpm">
+    ```bash
+    pnpm add @n1hal/strx
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## Quick Start
+
+**@n1hal/strx** provides simple, dependency free utilities for common *string* manipulation tasks.
+It includes full **TypeScript declarations**, so your editor automatically infers *types*, no manual typing needed.
+Each function is **documented with JSDoc**, giving you instant hover time *descriptions* and *examples* in you code editor itself.
+
+The library is **intentionally minimal**, you can even open the source and *copy-paste* any function without setup or dependencies.
+Every helper is written in **clean**, readable **JavaScript** for effortless *understanding* and use.
+
+## Usage Example
+
+You can import individual functions for tree-shaking and minimal bundle size, or use the **default export** to access all functions at once. All functions include **TypeScript type declarations** for autocompletion and type safety.
+
+### Named Imports
+
+<Tabs items={['Javascript', 'Typescript']}>
+  <Tab value="Javascript">
+    ```js 
+    import { capitalize, camelCase, slugify } from "@n1hal/strx";
+    
+    const capitalizedText = capitalize("hello world"); // "Hello world"
+    const camelCasedText = camelCase("hello world example"); // "helloWorldExample"
+    const sluggedText = slugify("Hello World! Café"); // "hello-world-cafe"
+    ```
+  </Tab>
+  <Tab value="Typescript">
+    ```ts
+    import { capitalize, camelCase, slugify } from "@n1hal/strx";
+    
+    const capitalizedText: string = capitalize("hello world"); // "Hello world"
+    const camelCasedText: string = camelCase("hello world example"); // "helloWorldExample"
+    const sluggedText: string = slugify("Hello World! Café"); // "hello-world-cafe"
+    ```
+  </Tab>
+</Tabs>
+
+### Default Export
+
+<Tabs items={['Javascript', 'Typescript']}>
+  <Tab value="Javascript">
+    ```js
+    import strx from "@n1hal/strx";
+    
+    strx.titleCase("once upon a time"); // "Once Upon A Time"
+    strx.truncate("A very long text that should be shortened", 20); // "A very long text..."
+    ```
+  </Tab>
+  <Tab value="Typescript">
+    ```ts
+    import strx from "@n1hal/strx";
+    
+    const titleText: string = strx.titleCase("once upon a time"); // "Once Upon A Time"
+    const truncatedText: string = strx.truncate("A very long text that should be shortened", 20); // "A very long text..."
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## All Functions
+
+Here you can you see the list of all the **functions** we provide as of now :
+
+### 1. **List of Format Helpers**
+
+| Function | Parameters | Description |
+|----------|------------|-------------|
+| <a href="#capitalize" className="no-underline">`capitalize`</a> | `str: string` | Uppercase the first character of a string |
+| <a href="#uncapitalize" className="no-underline">`uncapitalize`</a> | `str: string` | Lowercase the first character of a string |
+| <a href="#swapcase" className="no-underline">`swapCase`</a> | `str: string` | Swap case of every character in the string |
+| <a href="#titlecase" className="no-underline">`titleCase`</a> | `str: string` | Capitalize the first letter of each word |
+| <a href="#sentencecase" className="no-underline">`sentenceCase`</a> | `str: string` | Capitalize the first letter and ensure proper punctuation |
+| <a href="#camelcase" className="no-underline">`camelCase`</a> | `str: string` | Convert string to camelCase |
+| <a href="#snakecase" className="no-underline">`snakeCase`</a> | `str: string` | Convert string to snake_case |
+| <a href="#kebabcase" className="no-underline">`kebabCase`</a> | `str: string` | Convert string to kebab-case |
+| <a href="#constantcase" className="no-underline">`constantCase`</a> | `str: string` | Convert string to CONSTANT_CASE |
+
+
+### 2. **List of Word Helpers**
+
+| Function | Parameters | Description |
+|----------|------------|-------------|
+| <a href="#words" className="no-underline">`words`</a> | `str: string` | Split a string into an array of words by whitespace |
+| <a href="#countwords" className="no-underline">`countWords`</a> | `str: string` | Count the number of words in a string |
+| <a href="#truncate" className="no-underline">`truncate`</a> | `str: string, len?: number, ellipsis?: string` | Truncate a string to a maximum length and append ellipsis |
+| <a href="#removespaces" className="no-underline">`removeSpaces`</a> | `str: string` | Remove all whitespace characters from a string |
+
+### 3. **List of String Checks**
+
+| Function | Parameters | Description |
+|----------|------------|-------------|
+| <a href="#isalphabetic" className="no-underline">`isAlphabetic`</a> | `str: string` | Check if a string contains only ASCII letters (A-Z, a-z) |
+| <a href="#isnumeric" className="no-underline">`isNumeric`</a> | `str: string` | Check if a string contains only numeric digits (0-9) |
+
+### 4. **List of Special Helpers**
+
+| Function | Parameters | Description |
+|----------|------------|-------------|
+| <a href="#slugify" className="no-underline">`slugify`</a> | `input: string, options?: { separator?: string, lowercase?: boolean, preserveUnicode?: boolean }` | Create a URL-friendly slug from the input string |
+| <a href="#pluralize" className="no-underline">`pluralize`</a> | `word: string, count?: number` | Pluralize a simple English noun based on basic rules |
+| <a href="#reversestring" className="no-underline">`reverseString`</a> | `str: string` | Reverse the characters in a string |
+
+---
+
+## How to use
+
+### 1. Format Helpers
+
+#### capitalize()
+Uppercases the **first character** of a string.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to capitalize |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    capitalize("hello"); // "Hello"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = capitalize("hello"); // "Hello"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+
+#### uncapitalize()
+Lowercases the **first character** of a string.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | Input string to convert into lowercase |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    uncapitalize("Hello"); // "hello"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = uncapitalize("Hello"); // "hello"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### swapCase()
+Swaps the **case of every character** in a string, uppercase becomes lowercase, and lowercase becomes uppercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to swap character cases |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    swapCase("Hello WORLD"); // "hELLO world"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = swapCase("Hello WORLD"); // "hELLO world"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### titleCase()
+Converts the **first letter of each word** in a string to uppercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to convert to title case |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    titleCase("hello world from strx"); // "Hello World From Strx"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = titleCase("hello world from strx"); // "Hello World From Strx"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### sentenceCase()
+Converts a string to **sentence case** by capitalizing the **first letter**.  
+If the string does **not already end** with a period (`.`), exclamation mark (`!`), or question mark (`?`), it will **automatically add a period** (`.`) at the end.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to convert to sentence case |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    sentenceCase("hello world"); // "Hello world."
+    sentenceCase("what is this?"); // "What is this?"
+    sentenceCase("this is fine!"); // "This is fine!"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = sentenceCase("hello world"); // "Hello world."
+    const resultTwo: string = sentenceCase("what is this?"); // "What is this?"
+    const resultThree: string = sentenceCase("this is fine!"); // "This is fine!"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### camelCase()
+Converts any string to **camelCase** format.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | Input string to convert into camelCase |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    camelCase("hello world example"); // "helloWorldExample"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = camelCase("hello world example"); // "helloWorldExample"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### snakeCase()
+Converts a string to **snake_case** by replacing spaces and non-alphanumeric characters with underscores (`_`) and converting all letters to lowercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to convert to snake_case |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    snakeCase("Hello World Example"); // "hello_world_example"
+    snakeCase("Make_this--clean!!"); // "make_this_clean"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = snakeCase("Hello World Example"); // "hello_world_example"
+    const resultTwo:string = snakeCase("Make_this--clean!!"); // "make_this_clean"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### kebabCase()
+Converts a string to **kebab-case** by replacing spaces and non-alphanumeric characters with hyphens (`-`) and converting all letters to lowercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to convert to kebab-case |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    kebabCase("Hello World Example"); // "hello-world-example"
+    kebabCase("Make--this_clean!!"); // "make-this-clean"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = kebabCase("Hello World Example"); // "hello-world-example"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### constantCase()
+Converts a string to **CONSTANT_CASE** by transforming it into *snake_case* first and then converting all letters to uppercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to convert to CONSTANT_CASE |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    constantCase("Hello World Example"); // "HELLO_WORLD_EXAMPLE"
+    constantCase("Make this--clean!!"); // "MAKE_THIS_CLEAN"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = constantCase("Hello World Example"); // "HELLO_WORLD_EXAMPLE"
+    const resultTwo: string = constantCase("Make this--clean!!"); // "MAKE_THIS_CLEAN"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+### 2. Word Helpers
+
+#### words()
+Splits a string into an **array of words** by using whitespace as the separator.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to split into words |
+
+**Returns:** `string[]`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    words("Hello world from strx"); // ["Hello", "world", "from", "strx"]
+    words("  Multiple   spaces  here "); // ["Multiple", "spaces", "here"]
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string[] = words("Hello world from strx"); // ["Hello", "world", "from", "strx"]
+    const resulttwo: string[] = words("  Multiple   spaces  here "); // ["Multiple", "spaces", "here"]
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### countWords()
+Counts the **number of words** in a string by splitting it on whitespace.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string whose words will be counted |
+
+**Returns:** `number`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    countWords("Hello world from strx"); // 4
+    countWords("  Multiple   spaces  here "); // 3
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: number = countWords("Hello world from strx"); // 4
+    const resultTwo: number = countWords("  Multiple   spaces  here "); // 3
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### truncate()
+Truncates a string to a **maximum length** and appends an ellipsis (`...`) or custom string if the text exceeds that length.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to truncate |
+| `len` | `number` | `100` | Maximum length of the resulting string, including the ellipsis |
+| `ellipsis` | `string` | `"..."` | The string to append when truncating |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    truncate("This is a long string that needs truncation", 20); // "This is a long st..."
+    truncate("Short text", 20); // "Short text"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = truncate("This is a long string that needs truncation", 20); // "This is a long st..."
+    const resultTwo: string = truncate("Short text", 20); // "Short text"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### removeSpaces()
+Removes **all whitespace characters** (spaces, tabs, newlines) from a string.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string from which all whitespace will be removed |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    removeSpaces("  Hello   world  "); // "Helloworld"
+    removeSpaces("Line\nBreak\tTab"); // "LineBreakTab"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = removeSpaces("  Hello   world  "); // "Helloworld"
+    const resultTwo: string = removeSpaces("Line\nBreak\tTab"); // "LineBreakTab"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+### 3. String Checkers
+
+#### isAlphabetic()
+Checks if a string contains **only ASCII letters** (`A-Z` and `a-z`).
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to check for alphabetic characters only |
+
+**Returns:** `boolean`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    isAlphabetic("HelloWorld"); // true
+    isAlphabetic("Hello123");   // false
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: boolean = isAlphabetic("HelloWorld"); // true
+    const resultTwo: boolean = isAlphabetic("Hello123");   // false
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### isNumeric()
+Checks if a string contains **only numeric digits** (`0-9`).
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to check for numeric characters only |
+
+**Returns:** `boolean`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    isNumeric("12345"); // true
+    isNumeric("123abc"); // false
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: boolean = isNumeric("12345"); // true
+    const resultTwo: boolean = isNumeric("123abc"); // false
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+### 4. Special Helpers
+
+#### slugify()
+Creates a **URL-friendly slug** from a string by replacing spaces and special characters with a separator (default `-`).  
+It can optionally preserve Unicode letters and convert the result to lowercase.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `input` | `string` | `""` | The input string to convert into a slug |
+| `options.separator` | `string` | `"-"` | Character to use as the separator in the slug |
+| `options.lowercase` | `boolean` | `true` | Convert the slug to lowercase if true |
+| `options.preserveUnicode` | `boolean` | `false` | Keep Unicode characters if true |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    slugify("Hello World! Café"); // "hello-world-cafe"
+    slugify("Custom Separator Example", { separator: "_", lowercase: false }); // "Custom_Separator_Example"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = slugify("Hello World! Café"); // "hello-world-cafe"
+    const resultTwo: string = slugify("Custom Separator Example", { separator: "_", lowercase: false }); // "Custom_Separator_Example"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### pluralize()
+Pluralizes a simple English noun based on basic rules.  
+If the count is 1, the word is returned as-is. Otherwise, it applies common pluralization rules like adding `s`, `es`, or replacing `y` with `ies`.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `word` | `string` | `""` | The singular noun to pluralize |
+| `count` | `number` | `2` | The count of items; if 1, the singular form is returned |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    pluralize("cat", 1); // "cat"
+    pluralize("cat", 3); // "cats"
+    pluralize("box", 2); // "boxes"
+    pluralize("baby", 5); // "babies"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = pluralize("cat", 1); // "cat"
+    const resultTwo: string = pluralize("cat", 3); // "cats"
+    const resultThree: string = pluralize("box", 2); // "boxes"
+    const resultFour: string = pluralize("baby", 5); // "babies"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+#### reverseString()
+Reverses the **order of characters** in a string.
+
+| Parameter | Type | Default | Description |
+|------------|------|----------|-------------|
+| `str` | `string` | `""` | The input string to reverse |
+
+**Returns:** `string`
+
+<Tabs items={["Javascript", "TypeScript"]}>
+  <Tab value="JavaScript">
+    ```js
+    reverseString("Hello World"); // "dlroW olleH"
+    reverseString("strx"); // "xrts"
+    ```
+  </Tab> 
+  <Tab value="TypeScript">
+    ```ts
+    const result: string = reverseString("Hello World"); // "dlroW olleH"
+    const resultTWo: string =  reverseString("strx"); // "xrts"
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+
+
+
+
+
