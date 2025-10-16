@@ -7,7 +7,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
         <h1 className="text-4xl font-bold">
-          Welcome to <span className="text-fd-accent text-shadow-2xs text-shadow-fd-accent-foreground">n1hal's Tools</span>
+          Welcome to <span className="text-fd-accent text-shadow-2xs text-shadow-fd-accent-foreground">n1hal&apos; Tools</span>
         </h1>
         <p className="text-fd-muted-foreground text-lg">
           A collection of small, dependency-free JavaScript/TypeScript utilities.
