@@ -16,13 +16,13 @@ export default function HomePage() {
         <div className="flex justify-center gap-4 mt-4">
           <Link
             href="/docs"
-            className="px-4 py-2 bg-fd-accent text-black rounded-lg font-semibold hover:bg-fd-accent/90 transition"
+            className="px-4 py-2 bg-fd-accent text-fd-primary rounded-lg font-semibold hover:bg-fd-accent/90 transition"
           >
             Getting Started
           </Link>
           <Link
             href="/docs/strx"
-            className="px-4 py-2 bg-fd-accent text-black rounded-lg font-semibold hover:bg-fd-accent/90 transition"
+            className="px-4 py-2 bg-fd-accent text-fd-primary rounded-lg font-semibold hover:bg-fd-accent/90 transition"
           >
             Explore strx
           </Link>
